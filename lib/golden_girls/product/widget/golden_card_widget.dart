@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_golden_girls_api/golden_girls/home/model/golden_girls_model.dart';
+import 'package:flutter_golden_girls_api/golden_girls/product/app_constants/app_strings.dart';
 
 import 'package:kartal/kartal.dart';
 
@@ -30,12 +31,24 @@ class _GoldenGirlsCardState extends State<GoldenGirlsCard> {
               child:
                   Image.network(widget.model?.show?.image?.medium ?? imageUrl),
             ),
-            Padding(
-              padding: context.paddingLow,
-              child: Text(
-                widget.model?.show?.name ?? "",
-              ),
-            )
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: context.paddingLow,
+                  child: Text(
+                    widget.model?.show?.name ?? "",
+                  ),
+                ),
+                Padding(
+                  padding: context.paddingLow,
+                  child: Text(
+                    AppString().timeText +
+                        (widget.model?.show?.network?.country?.timezone ?? ""),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
